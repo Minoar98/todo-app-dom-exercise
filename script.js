@@ -1,4 +1,4 @@
- let newTask = document.querySelector('#new-task');
+let newTask = document.querySelector('#new-task');
  let form = document.querySelector('form');
  let todoUl = document.querySelector('#items');
  let completeUl = document.querySelector('.complete-list ul');
@@ -22,16 +22,16 @@ let addTask = function(event) {
    todoUl.appendChild(listItem);
    newTask.value = "";
    // bind the new list item to the incomplete list
-   bindInCompleteItems(listItem, completeTask);
+   bindInCompleteItems(listItem ,completeTask);
 }
 let completeTask = function() {
   let listItem = this.parentNode;
   let deleteBtn = document.createElement('button');
   deleteBtn.innerText = 'Delete';
-  deleteBtn.className = "delete"
+  deleteBtn.className = 'delete';
   listItem.appendChild(deleteBtn);
 
-  let checkBox = listItem.querySelector('input[type = "checkbox"]');
+  let checkBox = listItem.querySelector('input[type="checkbox"]');
   checkBox.remove();
   completeUl.appendChild(listItem);
   bindCompleteItems(listItem, deleteTask);
@@ -49,7 +49,8 @@ let deleteTask = function() {
 
 
 let bindInCompleteItems = function(taskItem,checkboxClick){
-   let checkBox = taskItem.querySelector('input [type ="checkbox"]');
+   // let checkBox = taskItem.querySelector('input [type ="checkbox"]');  //input er por space cilo tai code kaj kore ni
+   let checkBox = taskItem.querySelector('input[type ="checkbox"]'); 
    checkBox.onchange = checkboxClick;
 }
 
@@ -58,13 +59,7 @@ let bindCompleteItems = function(taskItem,deleteButtonClick){
       deleteButton.onclick = deleteButtonClick;
 }
 
-// for(let i=0; i< todoUl.children.length; i++ ) {
-//    bindInCompleteItems(todoUl.children[i], completeTask);
-// }
 
-// for(let i=0; i< completeUl.children.length; i++ ) {
-//    bindCompleteItems(completeUl.children[i], deleteTask);
-// }
 
 
 
@@ -75,7 +70,7 @@ for (let i = 0; i < todoUl.children.length; i++) {
    bindInCompleteItems(todoUl.children[i], completeTask);
 }
 
-for (let i = 0; i < todoUl.children.length; i++) {
+for (let i = 0; i < completeUl.children.length; i++) {
    bindCompleteItems(completeUl.children[i], deleteTask);
 }
 
